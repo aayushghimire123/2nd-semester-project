@@ -16,7 +16,7 @@ import Controller.*;
  * @author HP
  */
 public class LoginView extends javax.swing.JInternalFrame {
-    LoginModel model;
+    LoginModel1 model;
     public static boolean checkbox;
     /**
      * Creates new form loginView
@@ -41,10 +41,9 @@ public class LoginView extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtusername = new javax.swing.JTextField();
-        txtpassword = new javax.swing.JTextField();
         btnsubmit = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         CheckBox = new javax.swing.JCheckBox();
+        txtpassword = new javax.swing.JPasswordField();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Login Form");
@@ -59,20 +58,12 @@ public class LoginView extends javax.swing.JInternalFrame {
             }
         });
 
-        txtpassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtpasswordActionPerformed(evt);
-            }
-        });
-
         btnsubmit.setText("submit");
         btnsubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnsubmitActionPerformed(evt);
             }
         });
-
-        jButton2.setText("jButton2");
 
         CheckBox.setText("login as manager");
         CheckBox.addActionListener(new java.awt.event.ActionListener() {
@@ -90,10 +81,6 @@ public class LoginView extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(470, 470, 470))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -105,11 +92,10 @@ public class LoginView extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel2))
                         .addGap(128, 128, 128)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnsubmit)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtusername, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                            .addComponent(txtpassword)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(362, 362, 362)
                         .addComponent(CheckBox)))
@@ -132,9 +118,7 @@ public class LoginView extends javax.swing.JInternalFrame {
                 .addComponent(CheckBox)
                 .addGap(27, 27, 27)
                 .addComponent(btnsubmit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(56, 56, 56))
+                .addContainerGap(196, Short.MAX_VALUE))
         );
 
         pack();
@@ -162,13 +146,9 @@ public class LoginView extends javax.swing.JInternalFrame {
     private void CheckBoxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CheckBoxKeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_CheckBoxKeyReleased
-
-    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtpasswordActionPerformed
-     public LoginModel getUser()
+     public LoginModel1 getUser()
     {
-        model = new LoginModel(txtusername.getText(), txtpassword.getText());
+        model = new LoginModel1(txtusername.getText(), txtpassword.getText());
         return model;
         
     }
@@ -186,11 +166,10 @@ public class LoginView extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox CheckBox;
     private javax.swing.JButton btnsubmit;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txtpassword;
+    private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables
 }

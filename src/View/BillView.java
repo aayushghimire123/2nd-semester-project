@@ -18,6 +18,10 @@ public class BillView extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
        BasicInternalFrameUI ui=(BasicInternalFrameUI)this.getUI();
        ui.setNorthPane(null);
+       txtBill.setText("\n\t\tResturant Management System\n******************************************************************************************************************\n\n\t\t  Bill\n------------------------------------------------------------------------------------------------------------------------------------------\n");
+               
+       
+       
     }
 
     /**
@@ -31,7 +35,11 @@ public class BillView extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtBill = new javax.swing.JTextArea();
+        btnPrintBill = new javax.swing.JButton();
+        btnOrder = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
@@ -56,37 +64,106 @@ public class BillView extends javax.swing.JInternalFrame {
         setBorder(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(153, 0, 153));
+        txtBill.setColumns(20);
+        txtBill.setRows(5);
+        jScrollPane1.setViewportView(txtBill);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1202, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 601, Short.MAX_VALUE)
-        );
+        btnPrintBill.setText("print");
+        btnPrintBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintBillActionPerformed(evt);
+            }
+        });
+
+        btnOrder.setText("Order");
+        btnOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrderActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnOrder)
+                        .addGap(94, 94, 94)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2))
+                    .addComponent(btnPrintBill))
+                .addContainerGap(361, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(btnOrder))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(46, 46, 46)
+                .addComponent(btnPrintBill)
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
+        // TODO add your handling code here:
+        int products=2;
+        String []s=new String [products];
+        s[0]="dfs";
+        s[1]="sfa";
+        int []quanti=new int [products];
+        quanti[0]=2;
+        quanti[1]=3;
+        String Productname="";
+        for(int i=0;i<products;i++){
+            Productname=Productname+s[i]+"\t\t"+(quanti[0])+"\t\t"+"cost"+"\n";
+        }
+        
+        System.out.println(Productname);
+        
+        if(txtBill.getText().equals("\n\t\tResturant Management System\n******************************************************************************************************************\n\n\t\t  Bill\n------------------------------------------------------------------------------------------------------------------------------------------\n")){
+            txtBill.setText(txtBill.getText()+"Customer Name:"+"\nOrdered items\t\tQuantity\t\tCost per Quantity"+"\n-----------------------------------------------------------------------------------------------------------------------------------------------\n"
+                    +"your product"+"\t\t"+"your quantity"+"\t\t"+"your price"+"\n" +Productname
+                    +"-----------------------------------------------------------------------------------------------------------------------------------------------\n"
+                    +"Total Price:"+"\t\t"+"Your totoal"
+                    + "\n\n******************************************************************************************************************\n\n\t\tThank You\n\t\tVisit Again!!");
+        }
+        
+        
+    }//GEN-LAST:event_btnOrderActionPerformed
+
+    private void btnPrintBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintBillActionPerformed
+        // TODO add your handling code here:
+        try{
+            txtBill.print();
+        }
+        catch(Exception ee){
+            
+        }
+    }//GEN-LAST:event_btnPrintBillActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnOrder;
+    private javax.swing.JButton btnPrintBill;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtBill;
     // End of variables declaration//GEN-END:variables
 }

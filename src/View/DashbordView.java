@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
-
+import Controller.LoginController;
+import javax.swing.JOptionPane;
+import Model.*;
 /**
  *
  * @author HP
@@ -21,18 +23,20 @@ public class DashbordView extends javax.swing.JFrame {
         btnManageMenuItems.setEnabled(false);
         btnMangeEmployee.setEnabled(false);
         btnOrderManagement.setEnabled(false);
-        btnshowpayments.setEnabled(false);
+        btnaddNewproduct.setEnabled(false);
+        btnlogout.setEnabled(false);
+       
     }
        public  void EmployeAcess(){
         btnBilll.setEnabled(true);
-        btnManageMenuItems.setEnabled(true);
+        btnOrderManagement.setEnabled(true);
 }   
        public  void ManagementAcess(){
         btnBilll.setEnabled(true);
         btnManageMenuItems.setEnabled(true);
         btnMangeEmployee.setEnabled(true);
         btnOrderManagement.setEnabled(true);
-        btnshowpayments.setEnabled(true);
+        btnaddNewproduct.setEnabled(true);
 }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,16 +52,17 @@ public class DashbordView extends javax.swing.JFrame {
         btnOrderManagement = new javax.swing.JButton();
         btnManageMenuItems = new javax.swing.JButton();
         btnMangeEmployee = new javax.swing.JButton();
-        btnshowpayments = new javax.swing.JButton();
+        btnaddNewproduct = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        dtnlogin = new javax.swing.JButton();
+        btnlogin = new javax.swing.JButton();
         btnregistration = new javax.swing.JButton();
         btnlogout = new javax.swing.JButton();
         btnexit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnstart = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,10 +96,10 @@ public class DashbordView extends javax.swing.JFrame {
             }
         });
 
-        btnshowpayments.setText("ShowPayments");
-        btnshowpayments.addActionListener(new java.awt.event.ActionListener() {
+        btnaddNewproduct.setText("addNewproduct");
+        btnaddNewproduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnshowpaymentsActionPerformed(evt);
+                btnaddNewproductActionPerformed(evt);
             }
         });
 
@@ -107,13 +112,13 @@ public class DashbordView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnBilll, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnOrderManagement)
-                    .addComponent(btnshowpayments)
+                    .addComponent(btnaddNewproduct)
                     .addComponent(btnManageMenuItems, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnMangeEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnBilll, btnOrderManagement, btnshowpayments});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnBilll, btnOrderManagement, btnaddNewproduct});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,13 +132,13 @@ public class DashbordView extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(btnMangeEmployee)
                 .addGap(18, 18, 18)
-                .addComponent(btnshowpayments)
+                .addComponent(btnaddNewproduct)
                 .addContainerGap(66, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnBilll, btnManageMenuItems, btnMangeEmployee, btnOrderManagement, btnshowpayments});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnBilll, btnManageMenuItems, btnMangeEmployee, btnOrderManagement, btnaddNewproduct});
 
-        jDesktopPane1.setBackground(new java.awt.Color(204, 255, 255));
+        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel2.setText("Welcome to our Resturent Management System");
@@ -170,10 +175,10 @@ public class DashbordView extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 0, 0));
 
-        dtnlogin.setText("LogIn");
-        dtnlogin.addActionListener(new java.awt.event.ActionListener() {
+        btnlogin.setText("LogIn");
+        btnlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dtnloginActionPerformed(evt);
+                btnloginActionPerformed(evt);
             }
         });
 
@@ -200,7 +205,14 @@ public class DashbordView extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(0, 255, 153));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Resturent Management system");
+        jLabel1.setText("Restaurant Management system");
+
+        btnstart.setText("Start");
+        btnstart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnstartActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -208,28 +220,32 @@ public class DashbordView extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(dtnlogin)
+                .addComponent(btnlogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnregistration)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnlogout)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnexit)
-                .addGap(120, 120, 120)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnstart, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(170, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnexit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnregistration, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(dtnlogin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1))
+                        .addComponent(btnlogin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnstart, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(0, 16, Short.MAX_VALUE))
         );
 
@@ -290,12 +306,20 @@ public class DashbordView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnManageMenuItemsActionPerformed
 
     private void btnexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexitActionPerformed
-        // TODO add your handling code here:
-        
+        // TODO add your handling code here
+
+        dispose();
     }//GEN-LAST:event_btnexitActionPerformed
 
     private void btnlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlogoutActionPerformed
-        // TODO add your handling code here:
+                // TODO add your handling code here:
+                LoginController.a=0;
+                    dispose();
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                            public void run() {
+                                new DashbordView().setVisible(true);
+                            }
+                        });
     }//GEN-LAST:event_btnlogoutActionPerformed
 
     private void btnregistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrationActionPerformed
@@ -303,23 +327,44 @@ public class DashbordView extends javax.swing.JFrame {
           RegisterView bill=new RegisterView();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(bill).setVisible(true);
-        
                 
     }//GEN-LAST:event_btnregistrationActionPerformed
 
-    private void dtnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dtnloginActionPerformed
+    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
         //        new LoginView().setVisible(true);
        LoginView bill=new LoginView();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(bill).setVisible(true);
-    }//GEN-LAST:event_dtnloginActionPerformed
+    }//GEN-LAST:event_btnloginActionPerformed
 
-    private void btnshowpaymentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnshowpaymentsActionPerformed
+    private void btnaddNewproductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddNewproductActionPerformed
         // TODO add your handling code here:
-         ShowpaymentView bill =new ShowpaymentView();
+         AddNewProductView bill =new AddNewProductView();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(bill).setVisible(true);
-    }//GEN-LAST:event_btnshowpaymentsActionPerformed
+    }//GEN-LAST:event_btnaddNewproductActionPerformed
+
+    private void btnstartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnstartActionPerformed
+        // TODO add your handling code here:
+        if (LoginController.a==0){
+            JOptionPane.showMessageDialog(this,"Plz login");
+        }
+        else if (LoginController.a==1){
+            ManagementAcess();
+            btnlogout.setEnabled(true);
+            btnstart.setEnabled(false);
+            btnlogin.setEnabled(false);
+            btnregistration.setEnabled(false);
+        }
+        if(LoginController.a==2){
+            EmployeAcess();
+            btnlogout.setEnabled(true);
+            btnstart.setEnabled(false);
+            btnlogin.setEnabled(false);
+            btnregistration.setEnabled(false);
+        }
+        
+    }//GEN-LAST:event_btnstartActionPerformed
 
     /**
      * @param args the command line arguments
@@ -361,11 +406,12 @@ public class DashbordView extends javax.swing.JFrame {
     private javax.swing.JButton btnManageMenuItems;
     private javax.swing.JButton btnMangeEmployee;
     private javax.swing.JButton btnOrderManagement;
+    private javax.swing.JButton btnaddNewproduct;
     private javax.swing.JButton btnexit;
+    private javax.swing.JButton btnlogin;
     private javax.swing.JButton btnlogout;
     private javax.swing.JButton btnregistration;
-    private javax.swing.JButton btnshowpayments;
-    private javax.swing.JButton dtnlogin;
+    private javax.swing.JButton btnstart;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
